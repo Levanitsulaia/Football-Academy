@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}
+Football Academy
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <h1 class="text-center">Football Academy Shop</h1>
+</div>
+<hr>
+<div class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1 ">
+    {% for product in products %}
+    <div class="col">
+        <div class="card" style="height:400px">
+            <img src="/static/images/{{ product['img'] }}"
+                 class="card-img-top" style="height: 200px; object-fit: contain;" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{ product['name'] }}</h5>
+                <p class="card-text">{{ product['price'] }} ლ</p>
+                <a href="/product/{{ product['id'] }}" class="btn btn-warning">ნახვა</a>
+                {% if role == "Admin" %}
+                <a href="/delete_product/{{ product['id'] }}" class="btn btn-danger">პროდუქტის წაშლა</a>
+                <a href="/edit_product/{{ product['id'] }}" class="btn btn-info">რედაქტირება</a>
+                {% elif role == "Moderator" %}
+                <a href="#" class="btn btn-primary">ფასის ისტორიის ნახვა</a>
+                {% endif %}
+
+
+                <form action="{{ url_for('add_to_cart', product_id=product.id) }}" method="post">
+                    <button class="add-to-cart-btn">
+
+                </form>
+
+
+                <img src="/static/images/shopping cart.png" alt="Add to Cart" class="cart-icon">
+                </button>
+
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+
+{% if role == "Admin" %}
+<div class="nav-item">
+    <a class="btn btn-primary" href="/create_product">Add</a>
+</div>
+{% endif %}
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}
+Football Academy = Product Details
+{% endblock %}
+
+{% block body %}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-5">
+
+            <img src="/static/images/{{ product['img'] }}" style="height: 450px; object-fit: contain
+          ;" alt="{{ product['name'] }}">
+        </div>
+        <div class="col-md-7">
+            <h2>{{ product['name'] }}</h2>
+            <p><strong>Price:</strong> {{ product['price'] }}ლ</p>
+
+
+
+            <div class="mb-3">
+                <label for="size" class="form-label">Size:</label>
+                <select class="form-select " id="size" name="size">
+                    <option value="small">Small</option>
+                    <option value="medium">Medium</option>
+                    <option value="large">Larg</option>
+                </select>
+            </div>
+             <div class="mb-3">
+                <label for="size" class="form-label">Shoe Size:</label>
+                <select class="form-select " id="size" name="size">
+                    <option value="small">37-39</option>
+                    <option value="medium">40-42</option>
+                    <option value="large">43-47</option>
+                </select>
+            </div>
+
+
+
+<br><br><br><br><br><br><br><br><br>
+
+            <div class="">
+           <form action="{{ url_for('add_to_cart', product_id=product.id) }}" method="post">
+                <button type="submit" class="btn btn-success btn-lg mx-auto mt-">Add to Cart</>
+            </form>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col">
+            <div class="card bg-dark text-light rounded shadow">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col">
+            <a href="/" class="btn btn-secondary">Back to Products</a>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

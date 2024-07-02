@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}
+Football Academy - Contact Us
+{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+            <h1 class="text-center mb-4">Football Academy-ს საკონტაკტო</h1>
+        </div>
+    </div>
+    <form method="post" class="row">
+        {{ form.hidden_tag() }}
+        <div class="row mt-2">
+            {{ form.email(class="form-control", placeholder=form.email.label.text) }}
+        </div>
+        <div class="row mt-2">
+            {{ form.username(class="form-control", placeholder=form.username.label.text) }}
+        </div>
+        <div class="row mt-2">
+            {{ form.city(class="form-control", placeholder=form.city.label.text) }}
+        </div>
+        <div class="row mt-2">
+            {{ form.problem(class="form-control", placeholder=form.problem.label.text) }}
+        </div>
+        <div class="row mt-2">
+            {{ form.submit(class="btn btn-primary mt-2") }}
+        </div>
+
+
+    </form>
+</div>
+<a></a>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}
+Football Academy - My Profile
+{% endblock %}
+
+{% block body %}
+   <div class="row">
+       <div class="col">
+           <div class="row">
+               Name: {{ user['username'] }}
+           </div>
+           <div class="row">
+               Password : {{ user['password']}}
+           </div>
+           <div class="row">
+               <img src="/static/images/{{ user['img'] }}">
+           </div>
+       </div>
+   </div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

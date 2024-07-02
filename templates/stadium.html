@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block title %}
+Football Academy
+{% endblock %}
+
+
+
+
+{% block body %}
+
+<div id="carouselExampleCaptions" class="carousel slide"  >
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="/static/images/Capture 3.PNG" style="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Dinamo Tbilisi Academy</h5>
+        <p></p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="/static/images/Capture 4.PNG" style="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>FC Iberia 1999</h5>
+        <p></p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="/static/images/fc locomotivi.JPG" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5></h5>
+        <p>Some representative placeholder content for the third slide.</p>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+<br>
+
+<div class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1 ">
+    {% for club in clubs %}
+    <div class="col">
+       <div class="col">
+        <div class="card" style="height:400px">
+            <img src="/static/images/{{ club['img'] }}"
+                 class="card-img-top" style="height: 200px; object-fit: contain;" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{ club['name'] }}</h5>
+                <p class="card-text">{{ club['address'] }} </p>
+                <a href="/club/{{ club['id'] }}" class="btn btn-warning">ნახვა</a>
+                {% if role == "Admin" %}
+                <a href="/delete_club/{{ club['id'] }}" class="btn btn-danger">პროდუქტის წაშლა</a>
+                <a href="/edit_club/{{ club['id'] }}" class="btn btn-info">რედაქტირება</a>
+                {% elif role == "Moderator" %}
+                <a href="#" class="btn btn-primary">ფასის ისტორიის ნახვა</a>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+</div>
+    {% endfor %}
+</div>
+{% if role == "Admin" %}
+<div class="nav-item">
+    <a class="btn btn-primary" href="/create_club">Add</a>
+</div>
+{% endif %}
+{% endblock %}

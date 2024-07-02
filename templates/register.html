@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}
+Football Academy - Register
+{% endblock %}
+
+{% block body %}
+
+
+<div class="container bg-white">
+        <form method="post" enctype="multipart/form-data" class="col">
+            <div class="row">
+                {% for errors in form.errors.values() %}
+                <div class="alert alert-danger">
+                    {% for error in errors %}
+                    * {{ error }}</br>
+                    {% endfor %}
+                </div>
+                {% endfor %}
+
+            </div>
+            {{ form.hidden_tag() }}
+            <div class="row">
+                {{ form.profile_img.label.text }} : {{ form.profile_img(accept=".jpg,.png") }}
+            </div>
+                <div class="row mt-2">
+                    {{ form.username(class="form-control", placeholder=form.username.label.text) }}
+                </div>
+            <div class="row mt-2">
+                    {{ form.password(class="form-control", placeholder=form.password.label.text) }}
+                </div>
+            <div class="row mt-2">
+                    {{ form.repeat_password(class="form-control", placeholder=form.repeat_password.label.text) }}
+                </div>
+            <div class="row mt-2">
+                    {{ form.birthday(class="form-control", placeholder=form.birthday.label.text) }}
+                </div>
+            <div class="row mt-2 g-0 ">
+            <div class="col-1 ">
+                    {{ form.region_number(class="form-control") }}
+                </div>
+            <div class="col">
+                    {{ form.phone_number(class="form-control", placeholder=form.phone_number.label.text) }}
+                </div>
+             <div class="row mt-2">
+                    {{ form.gender(class="form-control", placeholder=form.gender.label.text) }}
+                </div>
+             <div class="row ">
+                    {{ form.country(class="form-control", placeholder=form.country.label.text) }}
+                </div>
+             <div class="row">
+                 {{ form.submit(class="btn btn-primary mt-2") }}
+             </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+
+
+
+
+
+
+
+
+

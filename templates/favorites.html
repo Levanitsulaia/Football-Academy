@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}
+Football Academy - Favorites
+{% endblock %}
+
+{% block body %}
+
+<div class="container mt-4">
+    <h2>Your Favorite Products</h2>
+    <div class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1">
+        {% for product in favorite_products %}
+        <div class="col">
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="/static/images/{{ product['img'] }}" style="width: 100%; height: 200px;"
+                            class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product['name'] }}</h5>
+                            <p class="card-text">{{ product['price'] }} ლ</p>
+                            <a href="/product/{{ product['id'] }}" class="btn btn-warning">View</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}
+Football Academy - Login
+{% endblock %}
+
+{% block body %}
+
+<div class="container bg-white">
+     {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-danger">{{ message }}</div>
+                {% endfor %}
+        {% endif %}
+    {% endwith %}
+        <form method="post" class="row">
+            {{ form.hidden_tag() }}
+            <div class="col">
+                <div class="row">
+                    {{ form.username(class="form-control", placeholder=form.username.label.text) }}
+                </div>
+                <div class="row mt-2">
+                    {{ form.password(class="form-control", placeholder=form.password.label.text) }}
+                </div>
+            </div>
+            <div class="row mt-2">
+                 {{ form.submit(class="btn btn-primary mt-2" ) }}
+            </div>
+        </form>
+    </div>
+
+
+{% endblock %}
+
+
+
+
+
+

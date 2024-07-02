@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}
+Create Product
+{% endblock %}
+
+{% block body %}
+<div class="container bg-white">
+            <div class="row">
+                {% for errors in form.errors.values() %}
+                <div class="alert alert-danger">
+                    {% for error in errors %}
+                    * {{ error }}</br>
+                    {% endfor %}
+                </div>
+                {% endfor %}
+
+            </div>
+             <form method="post" enctype="multipart/form-data" class="col">
+            {{ form.hidden_tag() }}
+            <div class="row">
+                {{ form.img.label.text }} : {{ form.img(accept=".jpg,.png") }}
+            </div>
+                <div class="row mt-2">
+                    {{ form.name(class="form-control", placeholder=form.name.label.text) }}
+                </div>
+            <div class="row mt-2">
+                    {{ form.price(class="form-control", placeholder=form.price.label.text) }}
+
+             </div>
+                 <div class="row">
+                     {{form.submit(class="btn btn-primary") }}
+                 </div>
+        </form>
+    </div>
+{% endblock %}

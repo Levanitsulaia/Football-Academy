@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}
+Shopping Cart
+{% endblock %}
+
+{% block body %}
+
+<h1>Shopping Cart</h1>
+<div class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1">
+    {% for item in cart_items %}
+    <div class="col">
+        <div class="card" style="height: 400px;">
+            <img src="/static/images/{{ item.product.img }}" style="height: 200px; object-fit: contain;"
+                 class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{ item.product.name }}</h5>
+                <p class="card-text">{{ item.product.price }} ლ</p>
+                <form action="/update_cart/{{ item.id }}" method="post">
+                    <div class="form-group">
+                        <label for="quantity">რაოდენობა:</label>
+                        <input type="number" id="quantity" name="quantity" class="form-control"
+                               value="{{ item.quantity }}" min="1">
+                    </div>
+                </form>
+                <div class="position-absolute bottom-0 end-0 p-3">
+                    <form action="/remove_from_cart/{{ item.id }}" method="post">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<div>
+    <h4 class="text">ჯამური ფასი: {{ total_price }} ლ</h4>
+    <a href="/" class="btn btn-secondary">Back to Products</a>
+</div>
+<div class="order-button-container">
+  <a href="/order" class="order-button">Order Now</a>
+</div>
+
+{% endblock %}

@@ -1,0 +1,44 @@
+<div class="navbar navbar-expand-lg bg-body-tertiary ">
+    <div class="container-lg">
+        <a class="navbar-brand" href="/"><h3>Football Academy</h3></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/stadium">Clubs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="/about">About us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href=/contact>Contact</a>
+                </li>
+                <li class="nav-item">
+
+                        <button class="add-to-cart-btn">
+                            <a class="nav-link" href="/cart">
+
+
+                        <img src="/static/images/shopping cart.png" alt="Add to Cart" class="cart-icon">
+                            </a>
+                        </button>
+                </li>
+            </ul>
+            <form class="d-flex btn-group" role="search">
+                {% if current_user.is_authenticated %}
+                <a class="btn btn-outline-primary" href="/logout">Log out</a>
+                {% else %}
+                <a class="btn btn-primary" href="/login" type="submit">Login</a>
+                <a class="btn btn-outline-primary" href="/register" type="submit">Register</a>
+
+                {% endif %}
+            </form>
+            </div>
+        </div>
+</div>

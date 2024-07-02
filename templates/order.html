@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}
+Football Academy - Order Message
+{% endblock %}
+
+{% block body %}
+<style>
+ body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+    .success-message {
+        margin-top: 10px;
+        font-size: 50px;
+        color: black;
+    }
+    .checkmark {
+        font-size: 48px;
+        color : green;
+    }
+    .home-section {
+        margin-top: 100px;
+    }
+    .home-logo {
+        width: 50px;
+        height: 50px;
+        margin-right: 10px;
+        vertical-align: middle;
+}
+
+</style>
+<div class="success-message">
+    მადლობა შეძენისთვის <span class="checkmark">&#10004;</span>
+</div>
+<div class="home-section">
+
+    <div class="nav-item">
+    <a class="btn btn-secondary" href="/">Home Page</a>
+</div>
+{% endblock %}
